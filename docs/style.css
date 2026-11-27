@@ -1,0 +1,83 @@
+/* 共通スタイル（site-design スキル） */
+:root{
+  --bg:#f7f8fb; --surface:#ffffff; --ink:#1b2233; --muted:#5b6578; --line:#e3e7ef;
+  --brand:#1f3a68; --brand-soft:#e8eef8; --accent:#d9682b; --accent-soft:#fdf0e7;
+  --good:#2f7d5b; --radius:14px; --shadow:0 1px 2px rgba(20,30,60,.06),0 6px 24px rgba(20,30,60,.06);
+  --font:"Noto Sans JP","Hiragino Sans","Yu Gothic UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10141c; --surface:#171d28; --ink:#e7ebf3; --muted:#9aa5b8; --line:#2a3243;
+  --brand:#9db8ea; --brand-soft:#1d2a42; --accent:#f0a273; --accent-soft:#3a2518; --good:#7fd1ab;
+  --shadow:none;}}
+:root[data-theme="dark"]{
+  --bg:#10141c; --surface:#171d28; --ink:#e7ebf3; --muted:#9aa5b8; --line:#2a3243;
+  --brand:#9db8ea; --brand-soft:#1d2a42; --accent:#f0a273; --accent-soft:#3a2518; --good:#7fd1ab; --shadow:none;}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.85;letter-spacing:.01em}
+a{color:var(--brand);text-underline-offset:3px}
+.site-header{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.site-header .in{max-width:1100px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:12px}
+.logo{font-weight:800;color:var(--brand);text-decoration:none;font-size:1.05rem;letter-spacing:.04em}
+.crumbs{font-size:.85rem;color:var(--muted);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.crumbs a{color:var(--muted)}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 16px 64px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px}
+@media (min-width:960px){.wrap.has-toc{grid-template-columns:minmax(0,1fr) 240px}}
+article{min-width:0}
+.hero{background:linear-gradient(135deg,var(--brand),#33558f);color:#fff;border-radius:var(--radius);padding:28px 24px;margin-bottom:24px;box-shadow:var(--shadow)}
+:root[data-theme="dark"] .hero{background:linear-gradient(135deg,#22365c,#2d4672)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(135deg,#22365c,#2d4672)}}
+.hero .kicker{font-size:.8rem;letter-spacing:.12em;opacity:.85}
+.hero h1{margin:.2em 0 .3em;font-size:clamp(1.4rem,4.5vw,2rem);line-height:1.35}
+.hero .meta{font-size:.85rem;opacity:.85}
+h2{font-size:1.35rem;margin:2.4em 0 .8em;padding:.2em 0 .2em .7em;border-left:5px solid var(--brand);line-height:1.4;scroll-margin-top:72px}
+h3{font-size:1.08rem;margin:1.8em 0 .6em;color:var(--brand);scroll-margin-top:72px}
+p,ul,ol{margin:.6em 0 1em}
+li{margin:.25em 0}
+strong{color:var(--ink);background:linear-gradient(transparent 62%,var(--accent-soft) 62%)}
+.summary{background:var(--surface);border:1px solid var(--line);border-left:6px solid var(--accent);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+.summary h2{margin-top:0;border:0;padding:0;color:var(--accent)}
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1em 0 1.4em;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.6}
+th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+thead th{background:var(--brand-soft);color:var(--brand);font-weight:700;white-space:nowrap;position:sticky;top:0}
+tbody tr:nth-child(even){background:color-mix(in srgb,var(--brand-soft) 35%,transparent)}
+tbody tr:last-child td{border-bottom:0}
+td.num{text-align:center;font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar{display:inline-block;height:8px;border-radius:4px;background:var(--accent);vertical-align:middle;margin-left:8px;opacity:.85}
+code{background:var(--brand-soft);padding:.1em .35em;border-radius:5px;font-size:.9em}
+.note{font-size:.88rem;color:var(--muted)}
+.toc{position:sticky;top:76px;align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:.88rem;display:none}
+@media (min-width:960px){.toc{display:block}}
+.toc b{display:block;margin-bottom:6px;color:var(--muted);font-size:.78rem;letter-spacing:.1em}
+.toc ol{margin:0;padding-left:1.2em}
+.toc a{color:var(--ink);text-decoration:none}
+.toc a:hover{color:var(--brand)}
+.toc-mobile{display:block;margin:0 0 20px}
+@media (min-width:960px){.toc-mobile{display:none}}
+.toc-mobile details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.toc-mobile summary{cursor:pointer;font-weight:700;color:var(--brand)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;margin:12px 0 28px}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .15s ease,border-color .15s ease}
+.card:hover{transform:translateY(-2px);border-color:var(--brand)}
+.card .t{font-weight:700;color:var(--brand)}
+.card .d{font-size:.85rem;color:var(--muted)}
+.site-footer{border-top:1px solid var(--line);background:var(--surface);font-size:.82rem;color:var(--muted)}
+.site-footer .in{max-width:1100px;margin:0 auto;padding:20px 16px}
+.theme-btn{margin-left:auto;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:4px 12px;font-size:.8rem;cursor:pointer}
+@media print{
+  .site-header,.toc,.toc-mobile,.site-footer,.theme-btn{display:none!important}
+  body{background:#fff;color:#000;font-size:10.5pt}
+  .hero{background:none!important;color:#000;box-shadow:none;padding:0;border-bottom:2px solid #000;border-radius:0}
+  .table-wrap{overflow:visible;border:0}
+  h2,h3{break-after:avoid} table,tr{break-inside:avoid}
+}
+.theme-btn{white-space:nowrap;flex-shrink:0}
+.logo{white-space:nowrap}
+@media (max-width:600px){.crumbs{display:none}}
+/* 2026-11-27：長いURLがスマホ幅ではみ出さないよう折り返す */
+article{overflow-wrap:break-word}
+/* 2026-11-27：見出しに番号があるので、目次の自動番号を消す */
+.toc ol,.toc-mobile ol{list-style:none;padding-left:0}
+/* 2026-11-27：スマホで列の多い表が潰れないよう、列に最小幅をつけて横スクロールにする */
+@media (max-width:600px){th,td{min-width:7.5em}}
